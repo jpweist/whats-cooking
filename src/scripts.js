@@ -3,51 +3,18 @@ let randomCook1 = 0;
 let randomCook2 = 0;
 let randomCook3 = 0;
 let userName, user, pantry, recipe, cookbook;
-let loadRecipes = document.querySelector(".book-btn");
+let loadAllRecipes = document.querySelector(".book-btn");
+let loadChefRecipes = document.querySelector(".chef-btn");
+let loadHeartRecipes = document.querySelector(".heart-btn");
+let heartPage = document.querySelector(".favorite");
+let allPage = document.querySelector(".all");
+let chefPage = document.querySelector(".chef");
+
 let cardSection = document.querySelector(".card-section");
 
-userName = $('#user-login').val() || users[0].name;
-pantry = new Pantry(users[number1].pantry);
-user = new User(1, users[number1].name, users[number1].pantry);
-cookbook = new Cookbook(recipeData);
-cookbook.loadBook();
-
-
-function loadAll(event) {
-  createCard(event);
-}
-
-window.onload = function() {
-  loadRecipes.addEventListener('click', loadAll(event));
-}
-
-function createCard(event) {
-  //map recipe over the whole array populate the page with recipe cards
-  console.log(cookbook.cookbook)
-  cookbook.cookbook.map(recipe => {
-
-    event.preventDefault();
-    cardSection.innerHTML += `
-    <div id="display-all">
-      <img class="crop full" src=${recipe.image} alt="${recipe.name}">
-      <h4>${recipe.name}</h4>
-    </div>`;
-  })
-    // var newRecipe = new Recipe(id, name, image, tags, instructions, ingredients );
-    // saveBtn.classList.add("disabled");
-};
-
-
-
-
-
-
-
 function getRandomInt(max) {
-
   return number1 = Math.floor(Math.random() * Math.floor(max));
 }
-
 getRandomInt(49) // for random user
 
 function getRandomCookInt1(max) {
@@ -64,6 +31,60 @@ function getRandomCookInt3(max) {
   return randomCook3 = Math.floor(Math.random() * Math.floor(max));
 }
 getRandomCookInt3(47) // for random user
+
+userName = $('#user-login').val() || users[0].name;
+pantry = new Pantry(users[number1].pantry);
+user = new User(1, users[number1].name, users[number1].pantry);
+cookbook = new Cookbook(recipeData);
+cookbook.loadBook();
+user.recipesToCook(cookbook.cookbook);
+
+loadHeartRecipes.addEventListener('click', createFavoritedCards);
+loadAllRecipes.addEventListener('click', createAllCards);
+loadChefRecipes.addEventListener('click', createChefCards);
+
+function createAllCards(event) {
+  //map recipe over the whole array populate the page with recipe cards
+  console.log('hello');
+  cookbook.cookbook.map(recipe => {
+    event.preventDefault();
+    allPage.innerHTML += `
+    <div id="display-all">
+      <button class="build-full"><img class="crop full" src=${recipe.image} alt="${recipe.name}"></button>
+      <h4>${recipe.name}</h4>
+    </div>`;
+  })
+    // var newRecipe = new Recipe(id, name, image, tags, instructions, ingredients );
+    // saveBtn.classList.add("disabled");
+};
+
+function createFavoritedCards(event) {
+  console.log(user.favorites);
+  user.favorites.map(recipe => {
+    event.preventDefault();
+    heartPage.innerHTML += `
+    <div id="display-all">
+      <button class="build-full"><img class="crop full" src=${recipe.image} alt="${recipe.name}"></button>
+      <h4>${recipe.name}</h4>
+    </div>`;
+  })
+};
+
+function createChefCards(event) {
+  console.log(user.availableRecipes);
+  user.availableRecipes.map(recipe => {
+    event.preventDefault();
+    chefPage.innerHTML += `
+    <div id="display-all">
+      <button class="build-full"><img class="crop full" src=${recipe.image} alt="${recipe.name}"></button>
+      <h4>${recipe.name}</h4>
+    </div>`;
+  })
+};
+
+
+
+
 
 
 
@@ -126,17 +147,17 @@ $( document ).ready(function() {
 
   $('#user-name').html(user.name);
 
-  $('.heart').on( "click", function() {
-    console.log("heart")
-  });
-
-  $('.chef').on( "click", function() {
-    console.log('chef')
-  });
-
-  $('.recipe-book').on( "click", function() {
-    console.log("recipe book");
-  });
+  // $('.heart').on( "click", function() {
+  //   console.log("heart")
+  // });
+  //
+  // $('.chef').on( "click", function() {
+  //   console.log('chef')
+  // });
+  //
+  // $('.recipe-book').on( "click", function() {
+  //   console.log("recipe book");
+  // });
 // var featureRecipe ='<img id="recipe-image" src="recipe.image"><div class="recipe"><h1 class="recipe-header"></h1><li class="recipe-number"></li><p class="recipe-instructions"><p></div>'
   // $('.recipe h1').html(cookbook["cookbook"][number1].name);
   // // $('.recipe li').html(cookbook["cookbook"][0].image);
