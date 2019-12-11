@@ -14,11 +14,11 @@
   <body>
     <main id="user-page" class="chef">
       <nav class="top-nav-bar">
-        <title id="user-name">User Name</title>
+        <a href="index.html"><title id="user-name"></title></a>
         <ul class="navigation-header">
           <li><img class="pantry-icon" src="../assets/heart.svg" alt=""></li>
           <li><img class="pantry-icon" src="../assets/chef.svg" alt=""></li>
-          <li><img class="pantry-icon" src="../assets/recipe.svg" alt=""></li>
+          <li><a href="all-recipes.html"><img class="pantry-icon book-btn" src="../assets/recipe.svg" alt=""></a></li>
         </ul>
       </nav>
       <header class="recipe-header">
@@ -28,17 +28,8 @@
           <p></p>
         </div>
       </header>
-      <h2>Chef Recommended Recipes | Based on Pantry Items</h2>
-      <ul id="favorite-recipes">
-        <li><img class="favorites-one crop" alt="favorite recipe 1"></li>
-        <li><img class="favorites-two crop" alt="favorite recipe 1"></li>
-        <li><img class="favorites-three crop" alt="favorite recipe 1"></li>
-      </ul>
-      <ul id="available-recipes">
-        <li><img class="available-one crop" alt="available recipe 1"></li>
-        <li><img class="available-two crop" alt="available recipe 2"></li>
-        <li><img class="available-three crop" alt="available recipe 3"></li>
-      </ul>
+      <h2>All Available Recipes</h2>
+      <div class="card-section display"></div>
     </main>
     <footer>
       <ul id="footer">

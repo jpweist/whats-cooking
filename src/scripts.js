@@ -2,6 +2,46 @@ let number1 = 0;
 let randomCook1 = 0;
 let randomCook2 = 0;
 let randomCook3 = 0;
+let userName, user, pantry, recipe, cookbook;
+let loadRecipes = document.querySelector(".book-btn");
+let cardSection = document.querySelector(".card-section");
+
+userName = $('#user-login').val() || users[0].name;
+pantry = new Pantry(users[number1].pantry);
+user = new User(1, users[number1].name, users[number1].pantry);
+cookbook = new Cookbook(recipeData);
+cookbook.loadBook();
+
+
+function loadAll(event) {
+  createCard(event);
+}
+
+window.onload = function() {
+  loadRecipes.addEventListener('click', loadAll(event));
+}
+
+function createCard(event) {
+  //map recipe over the whole array populate the page with recipe cards
+  console.log(cookbook.cookbook)
+  cookbook.cookbook.map(recipe => {
+
+    event.preventDefault();
+    cardSection.innerHTML += `
+    <div id="display-all">
+      <img class="crop full" src=${recipe.image} alt="${recipe.name}">
+      <h4>${recipe.name}</h4>
+    </div>`;
+  })
+    // var newRecipe = new Recipe(id, name, image, tags, instructions, ingredients );
+    // saveBtn.classList.add("disabled");
+};
+
+
+
+
+
+
 
 function getRandomInt(max) {
 
@@ -26,13 +66,6 @@ function getRandomCookInt3(max) {
 getRandomCookInt3(47) // for random user
 
 
-let userName, user, pantry, recipe, cookbook;
-
-userName = $('#user-login').val() || users[0].name;
-pantry = new Pantry(users[number1].pantry);
-user = new User(1, users[number1].name, users[number1].pantry);
-cookbook = new Cookbook(recipeData);
-cookbook.loadBook();
 
 // recipe = new Recipe(595736,
 //   'Loaded Chocolate Chip Pudding Cookie Cups',
