@@ -29,7 +29,7 @@ function createCard(event) {
     event.preventDefault();
     cardSection.innerHTML += `
     <div id="display-all">
-      <img class="crop full" src=${recipe.image} alt="${recipe.name}">
+      <button><img class="crop full" src=${recipe.image} alt="${recipe.name}"></button>
       <h4>${recipe.name}</h4>
     </div>`;
   })

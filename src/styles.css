@@ -168,13 +168,7 @@ h2 {
 }
 
 #display-all {
-  /* width: 100%; */
   width: calc(100% / 4);
-  /* padding: 5px;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  flex-wrap: wrap; */
 }
 
 h4 {
