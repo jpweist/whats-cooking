@@ -9,13 +9,12 @@ let loadHeartRecipes = document.querySelector(".heart-btn");
 let heartPage = document.querySelector(".favorite");
 let allPage = document.querySelector(".all");
 let chefPage = document.querySelector(".chef");
+
 let cardSection = document.querySelector(".card-section");
 
 function getRandomInt(max) {
-
   return number1 = Math.floor(Math.random() * Math.floor(max));
 }
-
 getRandomInt(49) // for random user
 
 function getRandomCookInt1(max) {
@@ -42,11 +41,11 @@ cookbook.loadBook();
 user.recipesToCook(cookbook.cookbook);
 
 
-window.onload = function() {
-  loadHeartRecipes.addEventListener('click', createFavoritedCards(event));
-  loadAllRecipes.addEventListener('click', createAllCards(event));
-  loadChefRecipes.addEventListener('click', createChefCards(event));
-}
+// window.onload = function() {
+  loadHeartRecipes.addEventListener('click', createFavoritedCards);
+  loadAllRecipes.addEventListener('click', createAllCards);
+  loadChefRecipes.addEventListener('click', createChefCards);
+// }
 
 function createAllCards(event) {
   //map recipe over the whole array populate the page with recipe cards
