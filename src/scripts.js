@@ -9,9 +9,30 @@ let loadHeartRecipes = document.querySelector(".heart-btn");
 let heartPage = document.querySelector(".favorite");
 let allPage = document.querySelector(".all");
 let chefPage = document.querySelector(".chef");
-
-
 let cardSection = document.querySelector(".card-section");
+
+function getRandomInt(max) {
+
+  return number1 = Math.floor(Math.random() * Math.floor(max));
+}
+
+getRandomInt(49) // for random user
+
+function getRandomCookInt1(max) {
+  return randomCook1 = Math.floor(Math.random() * Math.floor(max));
+}
+getRandomCookInt1(47) // for random user
+
+function getRandomCookInt2(max) {
+  return randomCook2 = Math.floor(Math.random() * Math.floor(max));
+}
+getRandomCookInt2(47) // for random user
+
+function getRandomCookInt3(max) {
+  return randomCook3 = Math.floor(Math.random() * Math.floor(max));
+}
+getRandomCookInt3(47) // for random user
+
 
 userName = $('#user-login').val() || users[0].name;
 pantry = new Pantry(users[number1].pantry);
@@ -68,29 +89,6 @@ function createChefCards(event) {
 
 
 
-
-
-function getRandomInt(max) {
-
-  return number1 = Math.floor(Math.random() * Math.floor(max));
-}
-
-getRandomInt(49) // for random user
-
-function getRandomCookInt1(max) {
-  return randomCook1 = Math.floor(Math.random() * Math.floor(max));
-}
-getRandomCookInt1(47) // for random user
-
-function getRandomCookInt2(max) {
-  return randomCook2 = Math.floor(Math.random() * Math.floor(max));
-}
-getRandomCookInt2(47) // for random user
-
-function getRandomCookInt3(max) {
-  return randomCook3 = Math.floor(Math.random() * Math.floor(max));
-}
-getRandomCookInt3(47) // for random user
 
 
 
