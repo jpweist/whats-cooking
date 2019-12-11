@@ -6,16 +6,17 @@ class User {
     this.favorites = [];
     this.pantryItemsId = [];
     this.recipeIngId = [];
+    this.availableRecipes = [];
   }
 
   searchByTags(userInput, cookBook) {
-    let availableRecipes = [];
+    availableRecipes = [];
     cookBook.forEach(recipe => {
       if(recipe.tags.includes(userInput)) {
-        availableRecipes.push(recipe);
+        this.availableRecipes.push(recipe);
       }
     });
-    return availableRecipes;
+    return this.availableRecipes;
   }
 
   saveToFavorites(recipe) {
@@ -31,8 +32,8 @@ class User {
     return this.pantryItemsId;
   }
 
-  condenseRecipeIngredientById(cookBook) {
-    cookBook.forEach((recipe) => {
+  condenseRecipeIngredientById(cookbook) {
+    cookbook.filter((recipe) => {
       return recipe.ingredients.forEach((ingredient) => {
         if(!this.recipeIngId.includes(ingredient.id)) {
           this.recipeIngId.push(ingredient.id);
@@ -43,22 +44,20 @@ class User {
   }
 
 
-  recipesToCook(cookBook) {
+  recipesToCook(cookbook) {
     // console.log(cookBook);
-    let availableRecipes = [];
     this.condenseUserIngredientById();
-    console.log('pantry: ', this.pantryItemsId);
-    this.condenseRecipeIngredientById(cookBook);
-    console.log('recipe: ', this.recipeIngId);
-      cookBook.forEach(recipe => {
+    // console.log('pantry: ', this.pantryItemsId);
+    this.condenseRecipeIngredientById(cookbook);
+    // console.log('recipe: ', this.recipeIngId);
+      cookbook.forEach(recipe => {
         if (this.pantryItemsId.every(id => this.recipeIngId.includes(id))) {
           // console.log(recipe);
-          availableRecipes.push(recipe);
+          this.availableRecipes.push(recipe);
         }
       });
-      cookBook.shift();
-      console.log(availableRecipes);
-      return availableRecipes;
+      cookbook.shift();
+      return this.availableRecipes;
     }
 }
 
