@@ -49,7 +49,9 @@ title {
 
 .recipe-book {
 }
-
+#search {
+  font-size: 1.5rem;
+}
 .recipe-ingredients {
   padding-bottom: 1rem 0;
 }
@@ -61,7 +63,14 @@ title {
 .nav-list {
   width: 100%;
 }
-
+.search-button {
+border: none;
+width: 3rem;
+font-size: 1.6rem;
+padding-right: 7rem;
+background-color: #4F2F0F;
+display: inline;
+}
 .navigation-header li {
   padding: 10px;
   margin-top: 10px;
