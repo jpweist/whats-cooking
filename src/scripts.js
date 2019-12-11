@@ -42,14 +42,15 @@ user.recipesToCook(cookbook.cookbook);
 loadHeartRecipes.addEventListener('click', createFavoritedCards);
 loadAllRecipes.addEventListener('click', createAllCards);
 loadChefRecipes.addEventListener('click', createChefCards);
+cardSection.addEventListener('click', addToFavorites);
 
 function createAllCards(event) {
-  //map recipe over the whole array populate the page with recipe cards
   console.log('hello');
   cookbook.cookbook.map(recipe => {
     event.preventDefault();
     allPage.innerHTML += `
     <div id="display-all">
+      <img class="add-heart" src="../assets/heartY.svg">
       <button class="build-full"><img class="crop full" src=${recipe.image} alt="${recipe.name}"></button>
       <h4>${recipe.name}</h4>
     </div>`;
@@ -64,6 +65,7 @@ function createFavoritedCards(event) {
     event.preventDefault();
     heartPage.innerHTML += `
     <div id="display-all">
+      <img class="add-heart" src="../assets/heartY.svg">
       <button class="build-full"><img class="crop full" src=${recipe.image} alt="${recipe.name}"></button>
       <h4>${recipe.name}</h4>
     </div>`;
@@ -76,11 +78,18 @@ function createChefCards(event) {
     event.preventDefault();
     chefPage.innerHTML += `
     <div id="display-all">
+      <img class="add-heart" src="../assets/heartY.svg">
       <button class="build-full"><img class="crop full" src=${recipe.image} alt="${recipe.name}"></button>
       <h4>${recipe.name}</h4>
     </div>`;
   })
 };
+
+function addToFavorites(event) {
+  event.preventDefault();
+  // user.saveToFavorites(event);
+  console.log(event);
+}
 
 
 
@@ -143,9 +152,9 @@ $( document ).ready(function() {
 
     window.location = 'index.html';
   });
-
-
   $('#user-name').html(user.name);
+
+
 
   // $('.heart').on( "click", function() {
   //   console.log("heart")
@@ -188,7 +197,6 @@ $( document ).ready(function() {
   $('.favorites-two').on("click", function() {
     user.favorites.push(cookbook["cookbook"][2]);
     console.log(user.favorites);
-
   });
 
   $('.favorites-three').attr("src", cookbook["cookbook"][3].image);

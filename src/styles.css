@@ -41,15 +41,6 @@ title {
   margin: 10px;
 }
 
-.heart {
-}
-
-.chef {
-}
-
-.recipe-book {
-}
-
 .recipe-ingredients {
   padding-bottom: 1rem 0;
 }
@@ -215,4 +206,10 @@ button {
 
 div {
   display: inline;
+}
+
+.add-heart {
+  padding: 16px;
+  height: 70px;
+  position: absolute;
 }
