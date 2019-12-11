@@ -5,6 +5,8 @@ let randomCook3 = 0;
 let userName, user, pantry, recipe, cookbook;
 let loadRecipes = document.querySelector(".book-btn");
 let cardSection = document.querySelector(".card-section");
+let search;
+let searchAnswers;
 
 userName = $('#user-login').val() || users[0].name;
 pantry = new Pantry(users[number1].pantry);
@@ -131,6 +133,17 @@ $( document ).ready(function() {
   $('.all-recipes-three').attr("src", cookbook["cookbook"][randomCook3].image);
   $('.all-recipes-three').attr("alt", cookbook["cookbook"][randomCook3].name);
 
+
+  $('.search-button').on("click", function() {
+    search = $('#search').val();
+    // console.log(search)
+    findSearchItem(search)
+
+  })
+  function findSearchItem(input) {
+    searchAnswers = cookbook["cookbook"].filter(cookbook => cookbook.name.includes(input));
+    console.log(searchAnswers);
+  };
 
 
 
