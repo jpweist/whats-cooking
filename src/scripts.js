@@ -6,6 +6,10 @@ let userName, user, pantry, recipe, cookbook;
 let loadAllRecipes = document.querySelector(".book-btn");
 let loadChefRecipes = document.querySelector(".chef-btn");
 let loadHeartRecipes = document.querySelector(".heart-btn");
+let heartPage = document.querySelector(".favorite");
+let allPage = document.querySelector(".all");
+let chefPage = document.querySelector(".chef");
+
 
 let cardSection = document.querySelector(".card-section");
 
@@ -14,25 +18,20 @@ pantry = new Pantry(users[number1].pantry);
 user = new User(1, users[number1].name, users[number1].pantry);
 cookbook = new Cookbook(recipeData);
 cookbook.loadBook();
+user.recipesToCook(cookbook.cookbook);
 
-
-// function loadAll(event) {
-//   createFavoritedCards(event);
-//   createAllCards(event);
-//   createChefCards(event);
-// }
 
 window.onload = function() {
   loadHeartRecipes.addEventListener('click', createFavoritedCards(event));
   loadAllRecipes.addEventListener('click', createAllCards(event));
-  loadRecipes.addEventListener('click', createChefCards(event));
+  loadChefRecipes.addEventListener('click', createChefCards(event));
 }
 
 function createAllCards(event) {
   //map recipe over the whole array populate the page with recipe cards
   cookbook.cookbook.map(recipe => {
     event.preventDefault();
-    cardSection.innerHTML += `
+    allPage.innerHTML += `
     <div id="display-all">
       <button class="build-full"><img class="crop full" src=${recipe.image} alt="${recipe.name}"></button>
       <h4>${recipe.name}</h4>
@@ -43,10 +42,10 @@ function createAllCards(event) {
 };
 
 function createFavoritedCards(event) {
-  console.log('hello')
-  cookbook.cookbook.map(recipe => {
+  console.log(user.favorites);
+  user.favorites.map(recipe => {
     event.preventDefault();
-    cardSection.innerHTML += `
+    heartPage.innerHTML += `
     <div id="display-all">
       <button class="build-full"><img class="crop full" src=${recipe.image} alt="${recipe.name}"></button>
       <h4>${recipe.name}</h4>
@@ -55,10 +54,10 @@ function createFavoritedCards(event) {
 };
 
 function createChefCards(event) {
-  console.log('hello')
-  cookbook.cookbook.map(recipe => {
+  console.log(user.availableRecipes);
+  user.availableRecipes.map(recipe => {
     event.preventDefault();
-    cardSection.innerHTML += `
+    chefPage.innerHTML += `
     <div id="display-all">
       <button class="build-full"><img class="crop full" src=${recipe.image} alt="${recipe.name}"></button>
       <h4>${recipe.name}</h4>
