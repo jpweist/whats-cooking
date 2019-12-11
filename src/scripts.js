@@ -11,6 +11,8 @@ let allPage = document.querySelector(".all");
 let chefPage = document.querySelector(".chef");
 
 let cardSection = document.querySelector(".card-section");
+let search;
+let searchAnswers;
 
 function getRandomInt(max) {
   return number1 = Math.floor(Math.random() * Math.floor(max));
@@ -43,9 +45,22 @@ loadHeartRecipes.addEventListener('click', createFavoritedCards);
 loadAllRecipes.addEventListener('click', createAllCards);
 loadChefRecipes.addEventListener('click', createChefCards);
 
+<<<<<<< HEAD
+function loadAll(event) {
+  createCard(event);
+}
+
+window.onload = function() {
+  loadRecipes.addEventListener('click', loadAll(event));
+}
+
+function createCard(event) {
+  console.log(cookbook.cookbook)
+=======
 function createAllCards(event) {
   //map recipe over the whole array populate the page with recipe cards
   console.log('hello');
+>>>>>>> 78cef79bf2b03a9e54c3b846e471a1f94963c566
   cookbook.cookbook.map(recipe => {
     event.preventDefault();
     allPage.innerHTML += `
@@ -54,8 +69,7 @@ function createAllCards(event) {
       <h4>${recipe.name}</h4>
     </div>`;
   })
-    // var newRecipe = new Recipe(id, name, image, tags, instructions, ingredients );
-    // saveBtn.classList.add("disabled");
+
 };
 
 function createFavoritedCards(event) {
@@ -86,6 +100,29 @@ function createChefCards(event) {
 
 
 
+<<<<<<< HEAD
+function getRandomInt(max) {
+
+  return number1 = Math.floor(Math.random() * Math.floor(max));
+}
+
+getRandomInt(49) // for random user
+
+function getRandomCookInt1(max) {
+  return randomCook1 = Math.floor(Math.random() * Math.floor(max));
+}
+getRandomCookInt1(47) // for random user
+
+function getRandomCookInt2(max) {
+  return randomCook2 = Math.floor(Math.random() * Math.floor(max));
+}
+getRandomCookInt2(47) // for random user
+
+function getRandomCookInt3(max) {
+  return randomCook3 = Math.floor(Math.random() * Math.floor(max));
+}
+getRandomCookInt3(47) // for random user
+=======
 
 
 // recipe = new Recipe(595736,
@@ -112,41 +149,29 @@ function createChefCards(event) {
 //   ]);
 
   // ingredient = new Ingredient(20081, "wheat flour", 142);
+>>>>>>> 78cef79bf2b03a9e54c3b846e471a1f94963c566
 
 $( document ).ready(function() {
-  // const User = import('./user.js');
-  // const Pantry = import('./pantry.js');
-  //  let recipe = new Recipe(595736, 'Loaded Chocolate Chip Pudding Cups', 'https://spoonacular.com/recipeImages/595736-556x370.jpg', ['antipasti', 'starter', 'snack'], ['Add egg and vanilla and mix until combined.'],
-  // [{
-  //   "name": "all purpose flour",
-  //   "id": 20081,
-  //   "quanitity": {
-  //     "amount": 1,
-  //     "unit": "cup"
-  //   }
-  // }, {
-  //   "name": "baking soda",
-  //   "id": 18372,
-  //   "quanitity": {
-  //     "amount": 0.5,
-  //     "unit": "tsp"
-  //   }
-  // }]
-  // );
-
-
-// Instantiate User:
-// let user = new User()
-
   $('.login').on( "click", function() {
-    // let user1 = new User(1,'Saige O\'Kon', [{'ingredient': 20081, 'amount': 2}, {'ingredient': 18372, 'amount': 2}], recipe);
-
     window.location = 'index.html';
   });
 
-
   $('#user-name').html(user.name);
 
+<<<<<<< HEAD
+  $('.heart').on( "click", function() {
+    console.log("heart")
+  });
+
+  $('.chef').on( "click", function() {
+    console.log('chef')
+  });
+
+  $('.recipe-book').on( "click", function() {
+    console.log("recipe book");
+  });
+
+=======
   // $('.heart').on( "click", function() {
   //   console.log("heart")
   // });
@@ -163,13 +188,10 @@ $( document ).ready(function() {
   // // $('.recipe li').html(cookbook["cookbook"][0].image);
   // $('.recipe-ingredients').html(cookbook["cookbook"][number1].ingredients[0].name)
   // $('.recipe p').html(cookbook["cookbook"][number1].instructions[0].instruction);
+>>>>>>> 78cef79bf2b03a9e54c3b846e471a1f94963c566
 
   $('.recipe').html(`<div class="recipe"><h1 class="recipe-header">${cookbook["cookbook"][number1].name}</h1><p class="recipe-ingredients">Ingredients: <br />${cookbook["cookbook"][number1].ingredients[0].name}, ${cookbook["cookbook"][number1].ingredients[1].name}, ${cookbook["cookbook"][number1].ingredients[2].name}, ${cookbook["cookbook"][number1].ingredients[3].name} cont...<hr></p><p class="recipe-instructions">1: ${cookbook["cookbook"][number1].instructions[0].instruction} <br/> 2: ${cookbook["cookbook"][number1].instructions[1].instruction} <br/> 3: ${cookbook["cookbook"][number1].instructions[2].instruction} <br/> 4: ${cookbook["cookbook"][number1].instructions[3].instruction} <br/> cont...<p></div>`)
 
-  // $('.recipe-header').html(featureRecipe)
-  // var large = '<div class="accordian_container"><a href="#" class="accordian_trigger"><h4>Co-Borrower Information</h4></a><hr/><div class="accordian_item" id="accord_item_2"><label> First Name</label><br/><input type="text"/><br/><label>Middle Name</label><br/><input type="text"/><br/><label>Last Name</label><br/><input type="text" /><br/><label>Home Number</label><br/><input type="text"/><br><label>Work Number</label><br/><input type="text"/><br><label>Cell Number</label><br/><input type="text"/><br></div></div>';
-  //
-  // $('#accordion_container').append(large);​
   $('#user-login').attr("value", user.name)
 
   $('#recipe-image').attr("src", cookbook["cookbook"][number1].image);
@@ -216,6 +238,17 @@ $( document ).ready(function() {
   $('.all-recipes-three').attr("src", cookbook["cookbook"][randomCook3].image);
   $('.all-recipes-three').attr("alt", cookbook["cookbook"][randomCook3].name);
 
+
+  $('.search-button').on("click", function() {
+    search = $('#search').val();
+    // console.log(search)
+    findSearchItem(search);
+
+  })
+  function findSearchItem(input) {
+    searchAnswers = cookbook["cookbook"].filter(cookbook => cookbook.name.includes(input));
+    console.log(searchAnswers);
+  };
 
 
 
