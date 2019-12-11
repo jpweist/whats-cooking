@@ -32,7 +32,6 @@ function getRandomCookInt3(max) {
 }
 getRandomCookInt3(47) // for random user
 
-
 userName = $('#user-login').val() || users[0].name;
 pantry = new Pantry(users[number1].pantry);
 user = new User(1, users[number1].name, users[number1].pantry);
@@ -40,15 +39,13 @@ cookbook = new Cookbook(recipeData);
 cookbook.loadBook();
 user.recipesToCook(cookbook.cookbook);
 
-
-// window.onload = function() {
-  loadHeartRecipes.addEventListener('click', createFavoritedCards);
-  loadAllRecipes.addEventListener('click', createAllCards);
-  loadChefRecipes.addEventListener('click', createChefCards);
-// }
+loadHeartRecipes.addEventListener('click', createFavoritedCards);
+loadAllRecipes.addEventListener('click', createAllCards);
+loadChefRecipes.addEventListener('click', createChefCards);
 
 function createAllCards(event) {
   //map recipe over the whole array populate the page with recipe cards
+  console.log('hello');
   cookbook.cookbook.map(recipe => {
     event.preventDefault();
     allPage.innerHTML += `
@@ -150,17 +147,17 @@ $( document ).ready(function() {
 
   $('#user-name').html(user.name);
 
-  $('.heart').on( "click", function() {
-    console.log("heart")
-  });
-
-  $('.chef').on( "click", function() {
-    console.log('chef')
-  });
-
-  $('.recipe-book').on( "click", function() {
-    console.log("recipe book");
-  });
+  // $('.heart').on( "click", function() {
+  //   console.log("heart")
+  // });
+  //
+  // $('.chef').on( "click", function() {
+  //   console.log('chef')
+  // });
+  //
+  // $('.recipe-book').on( "click", function() {
+  //   console.log("recipe book");
+  // });
 // var featureRecipe ='<img id="recipe-image" src="recipe.image"><div class="recipe"><h1 class="recipe-header"></h1><li class="recipe-number"></li><p class="recipe-instructions"><p></div>'
   // $('.recipe h1').html(cookbook["cookbook"][number1].name);
   // // $('.recipe li').html(cookbook["cookbook"][0].image);
