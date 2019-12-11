@@ -84,13 +84,6 @@ function createChefCards(event) {
 };
 
 
-
-
-
-
-
-
-
 $( document ).ready(function() {
   $('.login').on( "click", function() {
     window.location = 'index.html';
@@ -98,34 +91,6 @@ $( document ).ready(function() {
 
   $('#user-name').html(user.name);
 
-  // $('.heart').on( "click", function() {
-  //   console.log("heart")
-  // });
-  //
-  // $('.chef').on( "click", function() {
-  //   console.log('chef')
-  // });
-  //
-  // $('.recipe-book').on( "click", function() {
-  //   console.log("recipe book");
-  // });
-
-  // $('.heart').on( "click", function() {
-  //   console.log("heart")
-  // });
-  //
-  // $('.chef').on( "click", function() {
-  //   console.log('chef')
-  // });
-  //
-  // $('.recipe-book').on( "click", function() {
-  //   console.log("recipe book");
-  // });
-// var featureRecipe ='<img id="recipe-image" src="recipe.image"><div class="recipe"><h1 class="recipe-header"></h1><li class="recipe-number"></li><p class="recipe-instructions"><p></div>'
-  // $('.recipe h1').html(cookbook["cookbook"][number1].name);
-  // // $('.recipe li').html(cookbook["cookbook"][0].image);
-  // $('.recipe-ingredients').html(cookbook["cookbook"][number1].ingredients[0].name)
-  // $('.recipe p').html(cookbook["cookbook"][number1].instructions[0].instruction);
 
   $('.recipe').html(`<div class="recipe"><h1 class="recipe-header">${cookbook["cookbook"][number1].name}</h1><p class="recipe-ingredients">Ingredients: <br />${cookbook["cookbook"][number1].ingredients[0].name}, ${cookbook["cookbook"][number1].ingredients[1].name}, ${cookbook["cookbook"][number1].ingredients[2].name}, ${cookbook["cookbook"][number1].ingredients[3].name} cont...<hr></p><p class="recipe-instructions">1: ${cookbook["cookbook"][number1].instructions[0].instruction} <br/> 2: ${cookbook["cookbook"][number1].instructions[1].instruction} <br/> 3: ${cookbook["cookbook"][number1].instructions[2].instruction} <br/> 4: ${cookbook["cookbook"][number1].instructions[3].instruction} <br/> cont...<p></div>`)
 
@@ -190,9 +155,16 @@ $( document ).ready(function() {
       searchAnswers = cookbook["cookbook"].filter(cookbook => cookbook.tags.includes(input));
     };
     console.log(searchAnswers);
+    displaySearch();
   };
 
+  function displaySearch() {
+    $('#recipe-image').attr("src", searchAnswers[0].image);
+    $('#recipe-image').attr("alt", searchAnswers[0].name);
+    $('.recipe').html(`<h1 class="recipe-header">${searchAnswers[0].name}</h1><p class="recipe-ingredients">Ingredients: <br> ${searchAnswers[0].ingredients[0].name}, ${searchAnswers[0].ingredients[1].name}, ${searchAnswers[0].ingredients[2].name}, ${searchAnswers[0].ingredients[2].name}</p> <hr> <p class="recipe-instructions">Instructions: ${searchAnswers[0].instructions[0].instruction} <br></p>`)
+    // $('.recipe').html(`<div class="recipe"><h1 class="recipe-header">${searchAnswers[0].name}</h1><p class="recipe-ingredients">Ingredients: <br />${searchAnswers[0].ingredients[0].name}, ${searchAnswers[0].ingredients[1].name}, ${searchAnswers[0].ingredients[2].name}, ${searchAnswers[0].ingredients[3].name} cont...<hr></p><p class="recipe-instructions">1: ${searchAnswers[0].instructions[0]} <br/> 2: ${searchAnswers[0].instructions[1]} <br/> 3: ${searchAnswers[0].instructions[2]} <br/> 4: ${searchAnswers[0].instructions[3].instruction} <br/> cont...<p></div>`)
 
+  }
 
 
 }); // end jQuery
