@@ -137,7 +137,7 @@ $( document ).ready(function() {
   $('.search-button').on("click", function() {
     search = $('#search').val();
     // console.log(search)
-    findSearchItem(search)
+    findSearchItem(search);
 
   })
   function findSearchItem(input) {
