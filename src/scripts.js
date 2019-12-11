@@ -87,8 +87,8 @@ function createChefCards(event) {
 
 function addToFavorites(event) {
   event.preventDefault();
-  // user.saveToFavorites(event);
-  console.log(event);
+  user.saveToFavorites(event.path[0].alt);
+  console.log(user.favorites);
 }
 
 
