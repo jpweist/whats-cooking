@@ -41,18 +41,44 @@ title {
   margin: 10px;
 }
 
+.heart {
+}
+.heart:hover {
+  /* transition: 0.5s ease;
+  width: 65px;
+  opacity: 0.75; */
+
+}
+
+.recipe-book {
+}
+#search {
+  font-size: 1.5rem;
+  margin-left: 0.6rem;
+}
+
 .recipe-ingredients {
   padding-bottom: 1rem 0;
 }
+
 #user-name {
   display: flex;
   justify-content: flex-start;
+  width: 12vw;
 }
 
 .nav-list {
   width: 100%;
 }
-
+.search-button {
+  border: none;
+  font-size: 1.3rem;
+  background-color: #4F2F0F;
+  display: inline;
+  color: ghostwhite;
+  width: 5rem;
+  height: 35px;
+}
 .navigation-header li {
   padding: 10px;
   margin-top: 10px;

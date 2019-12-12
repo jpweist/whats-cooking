@@ -7,15 +7,19 @@
     <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Mono&display=swap" rel="stylesheet">
     <script
-      src="https://code.jquery.com/jquery-3.4.1.min.js"
-      integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
-      crossorigin="anonymous"></script>
+    src="https://code.jquery.com/jquery-3.4.1.min.js"
+    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+    crossorigin="anonymous"></script>
     </head>
   <body>
     <main id="user-page">
       <nav class="top-nav-bar">
         <a href="index.html"><title id="user-name"></title></a>
         <ul class="navigation-header">
+          <form >
+            <button class="search-button" type="button" name="button">Search</button>
+            <input id="search" type="text" value="search">
+          </form>
           <li><a href="favorites.html"><img class="pantry-icon heart" src="../assets/heart.svg" alt="favorite recipes icon"></a></li>
           <li><a href="chef.html"><img class="pantry-icon chef" src="../assets/chef.svg" alt="recommended recipes icon"></a></li>
           <li><a href="all-recipes.html"><img class="pantry-icon recipe-book" src="../assets/recipe.svg" alt="all available recipes"></a></li>
