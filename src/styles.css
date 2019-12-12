@@ -204,11 +204,8 @@ button {
   width: auto;
 }
 
-div {
-  display: inline;
-}
-
 .add-heart {
+  visibility: hidden;
   padding: 16px;
   height: 70px;
   position: absolute;

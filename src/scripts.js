@@ -2,6 +2,7 @@ let number1 = 0;
 let randomCook1 = 0;
 let randomCook2 = 0;
 let randomCook3 = 0;
+let saveImages = [];
 let userName, user, pantry, recipe, cookbook;
 let loadAllRecipes = document.querySelector(".book-btn");
 let loadChefRecipes = document.querySelector(".chef-btn");
@@ -45,7 +46,7 @@ loadChefRecipes.addEventListener('click', createChefCards);
 cardSection.addEventListener('click', addToFavorites);
 
 function createAllCards(event) {
-  console.log('hello');
+  console.log('load recipes');
   cookbook.cookbook.map(recipe => {
     event.preventDefault();
     allPage.innerHTML += `
@@ -55,15 +56,13 @@ function createAllCards(event) {
       <h4>${recipe.name}</h4>
     </div>`;
   })
-    // var newRecipe = new Recipe(id, name, image, tags, instructions, ingredients );
-    // saveBtn.classList.add("disabled");
 };
 
 function createFavoritedCards(event) {
-  console.log(user.favorites);
+  getData(event);
   user.favorites.map(recipe => {
     event.preventDefault();
-    heartPage.innerHTML += `
+    cardSection.innerHTML += `
     <div id="display-all">
       <img class="add-heart" src="../assets/heartY.svg">
       <button class="build-full"><img class="crop full" src=${recipe.image} alt="${recipe.name}"></button>
@@ -88,8 +87,28 @@ function createChefCards(event) {
 function addToFavorites(event) {
   event.preventDefault();
   user.saveToFavorites(event.path[0].alt);
-  console.log(user.favorites);
+  saveImages.push(event.path[0].src);
+  saveData();
+  console.log(event.path[0]);
 }
+
+function saveData() {
+  localStorage.setItem('recipe', JSON.stringify(user.favorites));
+  localStorage.setItem('img', JSON.stringify(saveImages));
+}
+
+function getData(event) {
+  var retrievedRecipe = JSON.parse(localStorage.getItem("recipe"));
+  event.preventDefault();
+  cardSection.innerHTML += `
+  <div id="display-all">
+    <img class="add-heart" src="../assets/heartY.svg">
+    <button class="build-full"><img class="crop full" src=${saveImages[0]} alt="${retrievedRecipe[0].name}"></button>
+    <h4>${retrievedRecipe[0]}</h4>
+  </div>`;
+}
+
+
 
 
 
