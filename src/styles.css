@@ -49,8 +49,6 @@ title {
   opacity: 0.75; */
 
 }
-.chef {
-}
 
 .recipe-book {
 }
@@ -58,9 +56,11 @@ title {
   font-size: 1.5rem;
   margin-left: 0.6rem;
 }
+
 .recipe-ingredients {
   padding-bottom: 1rem 0;
 }
+
 #user-name {
   display: flex;
   justify-content: flex-start;
@@ -230,6 +230,9 @@ button {
   width: auto;
 }
 
-div {
-  display: inline;
+.add-heart {
+  visibility: hidden;
+  padding: 16px;
+  height: 70px;
+  position: absolute;
 }

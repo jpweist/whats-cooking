@@ -21,7 +21,6 @@ class User {
 
   saveToFavorites(recipe) {
     this.favorites.push(recipe);
-    console.log(this.favorites);
     return this.favorites;
   }
 
