@@ -2,6 +2,7 @@ let number1 = 0;
 let randomCook1 = 0;
 let randomCook2 = 0;
 let randomCook3 = 0;
+let saveImages = [];
 let userName, user, pantry, recipe, cookbook;
 let loadAllRecipes = document.querySelector(".book-btn");
 let loadChefRecipes = document.querySelector(".chef-btn");
@@ -44,40 +45,37 @@ user.recipesToCook(cookbook.cookbook);
 loadHeartRecipes.addEventListener('click', createFavoritedCards);
 loadAllRecipes.addEventListener('click', createAllCards);
 loadChefRecipes.addEventListener('click', createChefCards);
+cardSection.addEventListener('click', addToFavorites);
 
-<<<<<<< HEAD
 function loadAll(event) {
   createCard(event);
 }
 
-window.onload = function() {
-  loadRecipes.addEventListener('click', loadAll(event));
-}
+// window.onload = function() {
+//   loadRecipes.addEventListener('click', loadAll(event));
+// }
 
 function createCard(event) {
-  console.log(cookbook.cookbook)
-=======
-function createAllCards(event) {
-  //map recipe over the whole array populate the page with recipe cards
+  console.log('load recipes');
   console.log('hello');
->>>>>>> 78cef79bf2b03a9e54c3b846e471a1f94963c566
   cookbook.cookbook.map(recipe => {
     event.preventDefault();
     allPage.innerHTML += `
     <div id="display-all">
+      <img class="add-heart" src="../assets/heartY.svg">
       <button class="build-full"><img class="crop full" src=${recipe.image} alt="${recipe.name}"></button>
       <h4>${recipe.name}</h4>
     </div>`;
   })
-
 };
 
 function createFavoritedCards(event) {
-  console.log(user.favorites);
+  getData(event);
   user.favorites.map(recipe => {
     event.preventDefault();
-    heartPage.innerHTML += `
+    cardSection.innerHTML += `
     <div id="display-all">
+      <img class="add-heart" src="../assets/heartY.svg">
       <button class="build-full"><img class="crop full" src=${recipe.image} alt="${recipe.name}"></button>
       <h4>${recipe.name}</h4>
     </div>`;
@@ -90,39 +88,44 @@ function createChefCards(event) {
     event.preventDefault();
     chefPage.innerHTML += `
     <div id="display-all">
+      <img class="add-heart" src="../assets/heartY.svg">
       <button class="build-full"><img class="crop full" src=${recipe.image} alt="${recipe.name}"></button>
       <h4>${recipe.name}</h4>
     </div>`;
   })
 };
 
-
-
-
-
-<<<<<<< HEAD
-function getRandomInt(max) {
-
-  return number1 = Math.floor(Math.random() * Math.floor(max));
+function addToFavorites(event) {
+  event.preventDefault();
+  user.saveToFavorites(event.path[0].alt);
+  saveImages.push(event.path[0].src);
+  saveData();
+  console.log(event.path[0]);
 }
 
-getRandomInt(49) // for random user
-
-function getRandomCookInt1(max) {
-  return randomCook1 = Math.floor(Math.random() * Math.floor(max));
+function saveData() {
+  localStorage.setItem('recipe', JSON.stringify(user.favorites));
+  localStorage.setItem('img', JSON.stringify(saveImages));
 }
-getRandomCookInt1(47) // for random user
 
-function getRandomCookInt2(max) {
-  return randomCook2 = Math.floor(Math.random() * Math.floor(max));
+function getData(event) {
+  var retrievedRecipe = JSON.parse(localStorage.getItem("recipe"));
+  event.preventDefault();
+  cardSection.innerHTML += `
+  <div id="display-all">
+    <img class="add-heart" src="../assets/heartY.svg">
+    <button class="build-full"><img class="crop full" src=${saveImages[0]} alt="${retrievedRecipe[0].name}"></button>
+    <h4>${retrievedRecipe[0]}</h4>
+  </div>`;
 }
-getRandomCookInt2(47) // for random user
 
-function getRandomCookInt3(max) {
-  return randomCook3 = Math.floor(Math.random() * Math.floor(max));
-}
-getRandomCookInt3(47) // for random user
-=======
+
+
+
+
+
+
+
 
 
 // recipe = new Recipe(595736,
@@ -149,29 +152,15 @@ getRandomCookInt3(47) // for random user
 //   ]);
 
   // ingredient = new Ingredient(20081, "wheat flour", 142);
->>>>>>> 78cef79bf2b03a9e54c3b846e471a1f94963c566
 
 $( document ).ready(function() {
   $('.login').on( "click", function() {
     window.location = 'index.html';
   });
 
+
   $('#user-name').html(user.name);
 
-<<<<<<< HEAD
-  $('.heart').on( "click", function() {
-    console.log("heart")
-  });
-
-  $('.chef').on( "click", function() {
-    console.log('chef')
-  });
-
-  $('.recipe-book').on( "click", function() {
-    console.log("recipe book");
-  });
-
-=======
   // $('.heart').on( "click", function() {
   //   console.log("heart")
   // });
@@ -188,7 +177,6 @@ $( document ).ready(function() {
   // // $('.recipe li').html(cookbook["cookbook"][0].image);
   // $('.recipe-ingredients').html(cookbook["cookbook"][number1].ingredients[0].name)
   // $('.recipe p').html(cookbook["cookbook"][number1].instructions[0].instruction);
->>>>>>> 78cef79bf2b03a9e54c3b846e471a1f94963c566
 
   $('.recipe').html(`<div class="recipe"><h1 class="recipe-header">${cookbook["cookbook"][number1].name}</h1><p class="recipe-ingredients">Ingredients: <br />${cookbook["cookbook"][number1].ingredients[0].name}, ${cookbook["cookbook"][number1].ingredients[1].name}, ${cookbook["cookbook"][number1].ingredients[2].name}, ${cookbook["cookbook"][number1].ingredients[3].name} cont...<hr></p><p class="recipe-instructions">1: ${cookbook["cookbook"][number1].instructions[0].instruction} <br/> 2: ${cookbook["cookbook"][number1].instructions[1].instruction} <br/> 3: ${cookbook["cookbook"][number1].instructions[2].instruction} <br/> 4: ${cookbook["cookbook"][number1].instructions[3].instruction} <br/> cont...<p></div>`)
 
@@ -210,7 +198,6 @@ $( document ).ready(function() {
   $('.favorites-two').on("click", function() {
     user.favorites.push(cookbook["cookbook"][2]);
     console.log(user.favorites);
-
   });
 
   $('.favorites-three').attr("src", cookbook["cookbook"][3].image);
