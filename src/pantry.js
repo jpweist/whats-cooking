@@ -1,8 +1,4 @@
 class Pantry {
-  constructor() {
-    // this.stockedIngredients = user.pantry;
-  }
-
   canCookMeals(user) {
     if (user.pantry !== []) {
       user.pantry.forEach(ingredient => {
@@ -22,6 +18,6 @@ class Pantry {
   }
 }
 // module.exports = Pantry;
-if (typeof module !== 'undefined'){
+if (typeof module !== 'undefined') {
   module.exports = Pantry;
 }

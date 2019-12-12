@@ -60,7 +60,7 @@ function createAllCards(event) {
       <h4>${recipe.name}</h4>
     </div>`;
   })
-};
+}
 
 function createFavoritedCards(event) {
   getData(event);
@@ -73,7 +73,7 @@ function createFavoritedCards(event) {
       <h4>${recipe.name}</h4>
     </div>`;
   })
-};
+}
 
 function createChefCards(event) {
   console.log(user.availableRecipes);
@@ -86,7 +86,7 @@ function createChefCards(event) {
       <h4>${recipe.name}</h4>
     </div>`;
   })
-};
+}
 
 function addToFavorites(event) {
   event.preventDefault();
@@ -104,10 +104,11 @@ function saveData() {
 function getData(event) {
   var retrievedRecipe = JSON.parse(localStorage.getItem("recipe"));
   event.preventDefault();
+  console.log(saveImages);
   cardSection.innerHTML += `
   <div id="display-all">
     <img class="add-heart" src="../assets/heartY.svg">
-    <button class="build-full"><img class="crop full" src=${saveImages[0]} alt="${retrievedRecipe[0].name}"></button>
+    <button class="build-full"><img class="crop full" src="${saveImages[0]}" alt="${retrievedRecipe[0].name}"></button>
     <h4>${retrievedRecipe[0]}</h4>
   </div>`;
 }
@@ -171,49 +172,24 @@ $( document ).ready(function() {
 
   $('.search-button').on("click", function() {
     search = $('#search').val();
-    // console.log(search)
     findSearchItem(search);
 
   })
   function findSearchItem(input) {
     if (cookbook["cookbook"].filter(cookbook => cookbook.name.includes(input)) ) {
       searchAnswers = cookbook["cookbook"].filter(cookbook => cookbook.name.includes(input));
-    };
+    }
     if (cookbook["cookbook"].filter(cookbook => cookbook.tags.includes(input)) ) {
       searchAnswers = cookbook["cookbook"].filter(cookbook => cookbook.tags.includes(input));
-    };
+    }
     console.log(searchAnswers);
     displaySearch();
-  };
+  }
 
   function displaySearch() {
     $('#recipe-image').attr("src", searchAnswers[0].image);
     $('#recipe-image').attr("alt", searchAnswers[0].name);
-    $('.recipe').html(`<h1 class="recipe-header">${searchAnswers[0].name}</h1><p class="recipe-ingredients">Ingredients: <br> ${searchAnswers[0].ingredients[0].name}, ${searchAnswers[0].ingredients[1].name}, ${searchAnswers[0].ingredients[2].name}, ${searchAnswers[0].ingredients[2].name}</p> <hr> <p class="recipe-instructions">Instructions: ${searchAnswers[0].instructions[0].instruction} <br></p>`)
-
-    // $('#display-all').html(
-    //     `<div id="display-all">
-    //       <button class="build-full"><img class="crop full" src="${searchAnswers[1].image}" alt="${searchAnswers[1].name}"></button>
-    //       <h4>${searchAnswers[1].name}</h4>
-    //     </div>`
-    //   );
-
-      // $('#display-all').html(
-      // `<header class="recipe-header">
-      //   <img id="recipe-image" src="${searchAnswers[0].image}" alt="${searchAnswers[0].name}">
-      //   <div class="recipe">
-      //     <h1>"${searchAnswers[0].name}"</h1>
-      //     <p class="recipe-ingredients">Ingredients: <br> ${searchAnswers[0].ingredients} <hr> <p class="recipe-instructions">Instructions: ${searchAnswers[0].instructions[0].instruction} <br>
-      //     </p>
-      //   </div>
-      // </header>
-      // <h2>All Available Recipes</h2>
-      // <div class="all display">
-      //   <li><img class="favorites-one crop" alt="${searchAnswers[1].name}" src="${searchAnswers[1].image}"></li>
-      //   <li><img class="favorites-two crop" alt="${searchAnswers[2].name}" src="${searchAnswers[2].image}"></li>
-      //   <li><img class="favorites-three crop" alt="${searchAnswers[3].name}" src="${searchAnswers[3].image}"></li>
-      //   <li><a href="favorites.html"><img class="menu-select-btn heart-btn" id="heart-btn" src="../assets/heart-btn2.jpg" alt="favorites image"></a></li>
-      // </div>`);
+    $('.recipe').html(`<h1 class="recipe-header">${searchAnswers[0].name}</h1><p class="recipe-ingredients">Ingredients: <br> ${searchAnswers[0].ingredients[0].name}, ${searchAnswers[0].ingredients[1].name}, ${searchAnswers[0].ingredients[2].name}, ${searchAnswers[0].ingredients[2].name}</p> <hr> <p class="recipe-instructions">Instructions: ${searchAnswers[0].instructions[0].instruction} <br></p>`);
 
     $('#favorite-recipes').html(
       `<ul id="favorite-recipes">
