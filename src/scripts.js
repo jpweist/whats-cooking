@@ -47,17 +47,10 @@ loadAllRecipes.addEventListener('click', createAllCards);
 loadChefRecipes.addEventListener('click', createChefCards);
 cardSection.addEventListener('click', addToFavorites);
 
-function loadAll(event) {
-  createCard(event);
-}
 
-// window.onload = function() {
-//   loadRecipes.addEventListener('click', loadAll(event));
-// }
+function createAllCards(event) {
+  //map recipe over the whole array populate the page with recipe cards
 
-function createCard(event) {
-  console.log('load recipes');
-  console.log('hello');
   cookbook.cookbook.map(recipe => {
     event.preventDefault();
     allPage.innerHTML += `
@@ -119,64 +112,14 @@ function getData(event) {
   </div>`;
 }
 
-
-
-
-
-
-
-
-
-
-// recipe = new Recipe(595736,
-//   'Loaded Chocolate Chip Pudding Cookie Cups',
-//   '../recipe-images/choco-cookies.jpg',
-//   ['antipasti', 'starter', 'snack'],
-//   ["In a large mixing bowl, whisk together the dry ingredients (flour, pudding mix, soda and salt). Set aside.In a large mixing bowl of a stand mixer, cream butter for 30 seconds. Gradually add granulated sugar and brown sugar and cream until light and fluffy."],
-//   [{
-//       "name": "all purpose flour",
-//       "id": 20081,
-//       "quanitity": {
-//         "amount": 1.5,
-//         "unit": "c"
-//       }
-//     },
-//     {
-//       "name": "baking soda",
-//       "id": 18372,
-//       "quanitity": {
-//         "amount": 0.5,
-//         "unit": "tsp"
-//       }
-//     }
-//   ]);
-
-  // ingredient = new Ingredient(20081, "wheat flour", 142);
-
 $( document ).ready(function() {
   $('.login').on( "click", function() {
     window.location = 'index.html';
   });
 
 
-  $('#user-name').html(user.name);
 
-  // $('.heart').on( "click", function() {
-  //   console.log("heart")
-  // });
-  //
-  // $('.chef').on( "click", function() {
-  //   console.log('chef')
-  // });
-  //
-  // $('.recipe-book').on( "click", function() {
-  //   console.log("recipe book");
-  // });
-// var featureRecipe ='<img id="recipe-image" src="recipe.image"><div class="recipe"><h1 class="recipe-header"></h1><li class="recipe-number"></li><p class="recipe-instructions"><p></div>'
-  // $('.recipe h1').html(cookbook["cookbook"][number1].name);
-  // // $('.recipe li').html(cookbook["cookbook"][0].image);
-  // $('.recipe-ingredients').html(cookbook["cookbook"][number1].ingredients[0].name)
-  // $('.recipe p').html(cookbook["cookbook"][number1].instructions[0].instruction);
+  $('#user-name').html(user.name);
 
   $('.recipe').html(`<div class="recipe"><h1 class="recipe-header">${cookbook["cookbook"][number1].name}</h1><p class="recipe-ingredients">Ingredients: <br />${cookbook["cookbook"][number1].ingredients[0].name}, ${cookbook["cookbook"][number1].ingredients[1].name}, ${cookbook["cookbook"][number1].ingredients[2].name}, ${cookbook["cookbook"][number1].ingredients[3].name} cont...<hr></p><p class="recipe-instructions">1: ${cookbook["cookbook"][number1].instructions[0].instruction} <br/> 2: ${cookbook["cookbook"][number1].instructions[1].instruction} <br/> 3: ${cookbook["cookbook"][number1].instructions[2].instruction} <br/> 4: ${cookbook["cookbook"][number1].instructions[3].instruction} <br/> cont...<p></div>`)
 
@@ -233,11 +176,71 @@ $( document ).ready(function() {
 
   })
   function findSearchItem(input) {
-    searchAnswers = cookbook["cookbook"].filter(cookbook => cookbook.name.includes(input));
+    if (cookbook["cookbook"].filter(cookbook => cookbook.name.includes(input)) ) {
+      searchAnswers = cookbook["cookbook"].filter(cookbook => cookbook.name.includes(input));
+    };
+    if (cookbook["cookbook"].filter(cookbook => cookbook.tags.includes(input)) ) {
+      searchAnswers = cookbook["cookbook"].filter(cookbook => cookbook.tags.includes(input));
+    };
     console.log(searchAnswers);
+    displaySearch();
   };
 
+  function displaySearch() {
+    $('#recipe-image').attr("src", searchAnswers[0].image);
+    $('#recipe-image').attr("alt", searchAnswers[0].name);
+    $('.recipe').html(`<h1 class="recipe-header">${searchAnswers[0].name}</h1><p class="recipe-ingredients">Ingredients: <br> ${searchAnswers[0].ingredients[0].name}, ${searchAnswers[0].ingredients[1].name}, ${searchAnswers[0].ingredients[2].name}, ${searchAnswers[0].ingredients[2].name}</p> <hr> <p class="recipe-instructions">Instructions: ${searchAnswers[0].instructions[0].instruction} <br></p>`)
 
+    // $('#display-all').html(
+    //     `<div id="display-all">
+    //       <button class="build-full"><img class="crop full" src="${searchAnswers[1].image}" alt="${searchAnswers[1].name}"></button>
+    //       <h4>${searchAnswers[1].name}</h4>
+    //     </div>`
+    //   );
+
+      // $('#display-all').html(
+      // `<header class="recipe-header">
+      //   <img id="recipe-image" src="${searchAnswers[0].image}" alt="${searchAnswers[0].name}">
+      //   <div class="recipe">
+      //     <h1>"${searchAnswers[0].name}"</h1>
+      //     <p class="recipe-ingredients">Ingredients: <br> ${searchAnswers[0].ingredients} <hr> <p class="recipe-instructions">Instructions: ${searchAnswers[0].instructions[0].instruction} <br>
+      //     </p>
+      //   </div>
+      // </header>
+      // <h2>All Available Recipes</h2>
+      // <div class="all display">
+      //   <li><img class="favorites-one crop" alt="${searchAnswers[1].name}" src="${searchAnswers[1].image}"></li>
+      //   <li><img class="favorites-two crop" alt="${searchAnswers[2].name}" src="${searchAnswers[2].image}"></li>
+      //   <li><img class="favorites-three crop" alt="${searchAnswers[3].name}" src="${searchAnswers[3].image}"></li>
+      //   <li><a href="favorites.html"><img class="menu-select-btn heart-btn" id="heart-btn" src="../assets/heart-btn2.jpg" alt="favorites image"></a></li>
+      // </div>`);
+
+    $('#favorite-recipes').html(
+      `<ul id="favorite-recipes">
+      <li><img class="favorites-one crop" alt="${searchAnswers[1].name}" src="${searchAnswers[1].image}"></li>
+      <li><img class="favorites-two crop" alt="${searchAnswers[2].name}" src="${searchAnswers[2].image}"></li>
+      <li><img class="favorites-three crop" alt="${searchAnswers[3].name}" src="${searchAnswers[3].image}"></li>
+      <li><a href="favorites.html"><img class="menu-select-btn heart-btn" id="heart-btn" src="../assets/heart-btn2.jpg" alt="favorites image"></a></li>
+      </ul>`
+    );
+    $('#available-recipes').html(
+      `<ul id="available-recipes">
+      <li><img class="favorites-one crop" alt="${searchAnswers[4].name}" src="${searchAnswers[4].image}"></li>
+      <li><img class="favorites-two crop" alt="${searchAnswers[5].name}" src="${searchAnswers[5].image}"></li>
+      <li><img class="favorites-three crop" alt="${searchAnswers[6].name}" src="${searchAnswers[6].image}"></li>
+      <li><a href="favorites.html"><img class="menu-select-btn heart-btn" id="heart-btn" src="../assets/heart-btn2.jpg" alt="favorites image"></a></li>
+      </ul>`
+    );
+    $('#all-recipes').html(
+      `<ul id="all-recipes">
+      <li><img class="favorites-one crop" alt="${searchAnswers[7].name}" src="${searchAnswers[7].image}"></li>
+      <li><img class="favorites-two crop" alt="${searchAnswers[8].name}" src="${searchAnswers[8].image}"></li>
+      <li><img class="favorites-three crop" alt="${searchAnswers[9].name}" src="${searchAnswers[9].image}"></li>
+      <li><a href="favorites.html"><img class="menu-select-btn heart-btn" id="heart-btn" src="../assets/heart-btn2.jpg" alt="favorites image"></a></li>
+      </ul>`
+    );
+
+  }
 
 
 }); // end jQuery
