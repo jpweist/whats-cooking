@@ -6,11 +6,10 @@ class Ingredient {
     this.name = name;
     this.estimatedCostInCents = estimatedCostInCents;
   }
-
 }
 
 // module.exports = Ingredient;
 
-if (typeof module !== 'undefined'){
-module.exports = Ingredient;
+if (typeof module !== 'undefined') {
+  module.exports = Ingredient;
 }

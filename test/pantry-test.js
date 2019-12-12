@@ -12,22 +12,22 @@ describe('Pantry', function() {
 
   beforeEach(() => {
     recipe = new Recipe(595736, 'Loaded Chocolate Chip Pudding Cups', 'https://spoonacular.com/recipeImages/595736-556x370.jpg', ['antipasti', 'starter', 'snack'], ['Add egg and vanilla and mix until combined.'],
-    [{
-      "name": "all purpose flour",
-      "id": 20081,
-      "quanitity": {
-        "amount": 1,
-        "unit": "cup"
-      }
-    }, {
-      "name": "baking soda",
-      "id": 18372,
-      "quanitity": {
-        "amount": 0.5,
-        "unit": "tsp"
-      }
-    }]);
-    user = new User(1,'Saige O\'Kon', [{'ingredient': 20081, 'amount': 2}, {'ingredient': 18372, 'amount': 2}], recipe);
+      [{
+        "name": "all purpose flour",
+        "id": 20081,
+        "quanitity": {
+          "amount": 1,
+          "unit": "cup"
+        }
+      }, {
+        "name": "baking soda",
+        "id": 18372,
+        "quanitity": {
+          "amount": 0.5,
+          "unit": "tsp"
+        }
+      }]);
+    user = new User(1, 'Saige O\'Kon', [{'ingredient': 20081, 'amount': 2}, {'ingredient': 18372, 'amount': 2}], recipe);
     pantry = new Pantry();
   });
 
@@ -50,7 +50,7 @@ describe('Pantry', function() {
     });
 
     it.skip('should have method canCookMeals return false if user CANNOT make meal', function() {
-      let user2 = new User(2,'Sam Smith', []);
+      let user2 = new User(2, 'Sam Smith', []);
       expect(pantry.canCookMeals(user2)).to.equal(false)
     });
 
