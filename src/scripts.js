@@ -162,7 +162,55 @@ $( document ).ready(function() {
     $('#recipe-image').attr("src", searchAnswers[0].image);
     $('#recipe-image').attr("alt", searchAnswers[0].name);
     $('.recipe').html(`<h1 class="recipe-header">${searchAnswers[0].name}</h1><p class="recipe-ingredients">Ingredients: <br> ${searchAnswers[0].ingredients[0].name}, ${searchAnswers[0].ingredients[1].name}, ${searchAnswers[0].ingredients[2].name}, ${searchAnswers[0].ingredients[2].name}</p> <hr> <p class="recipe-instructions">Instructions: ${searchAnswers[0].instructions[0].instruction} <br></p>`)
-    // $('.recipe').html(`<div class="recipe"><h1 class="recipe-header">${searchAnswers[0].name}</h1><p class="recipe-ingredients">Ingredients: <br />${searchAnswers[0].ingredients[0].name}, ${searchAnswers[0].ingredients[1].name}, ${searchAnswers[0].ingredients[2].name}, ${searchAnswers[0].ingredients[3].name} cont...<hr></p><p class="recipe-instructions">1: ${searchAnswers[0].instructions[0]} <br/> 2: ${searchAnswers[0].instructions[1]} <br/> 3: ${searchAnswers[0].instructions[2]} <br/> 4: ${searchAnswers[0].instructions[3].instruction} <br/> cont...<p></div>`)
+
+    // $('#display-all').html(
+    //     `<div id="display-all">
+    //       <button class="build-full"><img class="crop full" src="${searchAnswers[1].image}" alt="${searchAnswers[1].name}"></button>
+    //       <h4>${searchAnswers[1].name}</h4>
+    //     </div>`
+    //   );
+
+      // $('#display-all').html(
+      // `<header class="recipe-header">
+      //   <img id="recipe-image" src="${searchAnswers[0].image}" alt="${searchAnswers[0].name}">
+      //   <div class="recipe">
+      //     <h1>"${searchAnswers[0].name}"</h1>
+      //     <p class="recipe-ingredients">Ingredients: <br> ${searchAnswers[0].ingredients} <hr> <p class="recipe-instructions">Instructions: ${searchAnswers[0].instructions[0].instruction} <br>
+      //     </p>
+      //   </div>
+      // </header>
+      // <h2>All Available Recipes</h2>
+      // <div class="all display">
+      //   <li><img class="favorites-one crop" alt="${searchAnswers[1].name}" src="${searchAnswers[1].image}"></li>
+      //   <li><img class="favorites-two crop" alt="${searchAnswers[2].name}" src="${searchAnswers[2].image}"></li>
+      //   <li><img class="favorites-three crop" alt="${searchAnswers[3].name}" src="${searchAnswers[3].image}"></li>
+      //   <li><a href="favorites.html"><img class="menu-select-btn heart-btn" id="heart-btn" src="../assets/heart-btn2.jpg" alt="favorites image"></a></li>
+      // </div>`);
+
+    $('#favorite-recipes').html(
+      `<ul id="favorite-recipes">
+      <li><img class="favorites-one crop" alt="${searchAnswers[1].name}" src="${searchAnswers[1].image}"></li>
+      <li><img class="favorites-two crop" alt="${searchAnswers[2].name}" src="${searchAnswers[2].image}"></li>
+      <li><img class="favorites-three crop" alt="${searchAnswers[3].name}" src="${searchAnswers[3].image}"></li>
+      <li><a href="favorites.html"><img class="menu-select-btn heart-btn" id="heart-btn" src="../assets/heart-btn2.jpg" alt="favorites image"></a></li>
+      </ul>`
+    );
+    $('#available-recipes').html(
+      `<ul id="available-recipes">
+      <li><img class="favorites-one crop" alt="${searchAnswers[4].name}" src="${searchAnswers[4].image}"></li>
+      <li><img class="favorites-two crop" alt="${searchAnswers[5].name}" src="${searchAnswers[5].image}"></li>
+      <li><img class="favorites-three crop" alt="${searchAnswers[6].name}" src="${searchAnswers[6].image}"></li>
+      <li><a href="favorites.html"><img class="menu-select-btn heart-btn" id="heart-btn" src="../assets/heart-btn2.jpg" alt="favorites image"></a></li>
+      </ul>`
+    );
+    $('#all-recipes').html(
+      `<ul id="all-recipes">
+      <li><img class="favorites-one crop" alt="${searchAnswers[7].name}" src="${searchAnswers[7].image}"></li>
+      <li><img class="favorites-two crop" alt="${searchAnswers[8].name}" src="${searchAnswers[8].image}"></li>
+      <li><img class="favorites-three crop" alt="${searchAnswers[9].name}" src="${searchAnswers[9].image}"></li>
+      <li><a href="favorites.html"><img class="menu-select-btn heart-btn" id="heart-btn" src="../assets/heart-btn2.jpg" alt="favorites image"></a></li>
+      </ul>`
+    );
 
   }
 
