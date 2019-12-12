@@ -1,19 +1,30 @@
+let cardSection = document.querySelector(".card-section");
+let chefPage = document.querySelector(".chef");
+let allPage = document.querySelector(".all");
+let heartPage = document.querySelector(".favorite");
+let loadAllRecipes = document.querySelector(".book-btn");
+let loadChefRecipes = document.querySelector(".chef-btn");
+let loadHeartRecipes = document.querySelector(".heart-btn");
 let number1 = 0;
 let randomCook1 = 0;
 let randomCook2 = 0;
 let randomCook3 = 0;
 let saveImages = [];
-let userName, user, pantry, recipe, cookbook;
-let loadAllRecipes = document.querySelector(".book-btn");
-let loadChefRecipes = document.querySelector(".chef-btn");
-let loadHeartRecipes = document.querySelector(".heart-btn");
-let heartPage = document.querySelector(".favorite");
-let allPage = document.querySelector(".all");
-let chefPage = document.querySelector(".chef");
-
-let cardSection = document.querySelector(".card-section");
 let search;
 let searchAnswers;
+let userName, user, pantry, recipe, cookbook;
+
+userName = $('#user-login').val() || users[0].name;
+pantry = new Pantry(users[number1].pantry);
+user = new User(1, users[number1].name, users[number1].pantry);
+cookbook = new Cookbook(recipeData);
+cookbook.loadBook();
+user.recipesToCook(cookbook.cookbook);
+
+loadHeartRecipes.addEventListener('click', createFavoritedCards);
+loadAllRecipes.addEventListener('click', createAllCards);
+loadChefRecipes.addEventListener('click', createChefCards);
+cardSection.addEventListener('click', addToFavorites);
 
 function getRandomInt(max) {
   return number1 = Math.floor(Math.random() * Math.floor(max));
@@ -35,22 +46,7 @@ function getRandomCookInt3(max) {
 }
 getRandomCookInt3(47) // for random user
 
-userName = $('#user-login').val() || users[0].name;
-pantry = new Pantry(users[number1].pantry);
-user = new User(1, users[number1].name, users[number1].pantry);
-cookbook = new Cookbook(recipeData);
-cookbook.loadBook();
-user.recipesToCook(cookbook.cookbook);
-
-loadHeartRecipes.addEventListener('click', createFavoritedCards);
-loadAllRecipes.addEventListener('click', createAllCards);
-loadChefRecipes.addEventListener('click', createChefCards);
-cardSection.addEventListener('click', addToFavorites);
-
-
 function createAllCards(event) {
-  //map recipe over the whole array populate the page with recipe cards
-
   cookbook.cookbook.map(recipe => {
     event.preventDefault();
     allPage.innerHTML += `
@@ -119,7 +115,6 @@ $( document ).ready(function() {
   });
 
 
-
   $('#user-name').html(user.name);
 
   $('.recipe').html(`<div class="recipe"><h1 class="recipe-header">${cookbook["cookbook"][number1].name}</h1><p class="recipe-ingredients">Ingredients: <br />${cookbook["cookbook"][number1].ingredients[0].name}, ${cookbook["cookbook"][number1].ingredients[1].name}, ${cookbook["cookbook"][number1].ingredients[2].name}, ${cookbook["cookbook"][number1].ingredients[3].name} cont...<hr></p><p class="recipe-instructions">1: ${cookbook["cookbook"][number1].instructions[0].instruction} <br/> 2: ${cookbook["cookbook"][number1].instructions[1].instruction} <br/> 3: ${cookbook["cookbook"][number1].instructions[2].instruction} <br/> 4: ${cookbook["cookbook"][number1].instructions[3].instruction} <br/> cont...<p></div>`)
@@ -175,6 +170,7 @@ $( document ).ready(function() {
     findSearchItem(search);
 
   })
+
   function findSearchItem(input) {
     if (cookbook["cookbook"].filter(cookbook => cookbook.name.includes(input)) ) {
       searchAnswers = cookbook["cookbook"].filter(cookbook => cookbook.name.includes(input));
@@ -182,7 +178,6 @@ $( document ).ready(function() {
     if (cookbook["cookbook"].filter(cookbook => cookbook.tags.includes(input)) ) {
       searchAnswers = cookbook["cookbook"].filter(cookbook => cookbook.tags.includes(input));
     }
-    console.log(searchAnswers);
     displaySearch();
   }
 

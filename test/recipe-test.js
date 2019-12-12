@@ -69,7 +69,7 @@ describe('Recipe', function() {
 
   });
 
-  it.skip('should know the cost of the recipe per ingredient', function() {
+  it.only('should know the cost of the recipe per ingredient', function() {
     recipe.findCostPerRecipe(recipe);
     expect(recipe.findCostPerRecipe()).to.equal(142)
   });

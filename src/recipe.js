@@ -18,10 +18,18 @@ class Recipe {
   }
 
   findCostPerRecipe() {
-    return this.ingredientPerRecipe.map((ingredient) => {
-      let ingredientQuanitity = ingredient.quanitity;
-      return ingredientQuanitity.map(item => item.amount);
-    })
+    let total = 0;
+    let allIngredients = [];
+    return this.ingredients.map((ingredient) => {
+      let ingredientID= ingredient.id;
+      allIngredients.push(ingredientID)
+      allIngredients.filter(ingredient => {
+        if (allIngredients == ingredient)
+        total += ingredient[ingredient].estimatedCostInCents;
+        return total;
+      })
+
+      })
     return this.costPerRecipe = total;
   }
 
