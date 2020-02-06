@@ -2,7 +2,7 @@
 
 This app lets you be the Iron Chef and see what is available to make in your pantry. Combining JavaScript classes/vanilla JS , Mocha/Chai testing, jQuery and CSS styles into a fun and interactive way to find out what you can make for a snack, lunch, dinner etc.  
 
-## (https://jpweist.github.io/whats-cooking/)
+## https://jpweist.github.io/whats-cooking/
 
 ![](search.gif)
 
