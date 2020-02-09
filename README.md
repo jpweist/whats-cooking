@@ -4,7 +4,6 @@ This app lets you be the Iron Chef and see what is available to make in your pan
 
 ## https://jpweist.github.io/whats-cooking/
 
-![](search.gif)
 
 ## Set Up
 
